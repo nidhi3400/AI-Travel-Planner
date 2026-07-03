@@ -24,7 +24,7 @@ export interface TripResponse {
   destination: string;
   budget: number;
   duration: number;
-  itinerary: DayPlan[];
+  itinerary: Trip;
   createdAt: string;
   updatedAt: string;
 }

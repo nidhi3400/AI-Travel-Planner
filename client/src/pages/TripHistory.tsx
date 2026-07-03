@@ -49,7 +49,7 @@ export default function TripHistory() {
 
             <ItineraryAccordion
               itinerary={
-                trip.itinerary || []
+                trip.itinerary?.itinerary || []
               }
             />
           </div>
