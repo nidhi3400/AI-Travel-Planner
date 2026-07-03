@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "http://localhost:3001/api/trips";
+const API_URL = "https://ai-travel-planner-1-yrm0.onrender.com";
+const API = `${API_URL}/api/trips`;
 
 export const generateTrip = async (data) => {
   const res = await axios.post(`${API}/generate`, data);
