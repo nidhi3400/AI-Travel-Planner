@@ -1,0 +1,37 @@
+.day-card {
+  background: #1e293b;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.day-button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.activities {
+  padding: 0 16px 16px;
+}
+
+.activity {
+  background: #334155;
+  border-left: 4px solid #3b82f6;
+
+  padding: 12px;
+  margin-top: 8px;
+
+  border-radius: 8px;
+}

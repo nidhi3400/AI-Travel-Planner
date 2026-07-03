@@ -1,0 +1,58 @@
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.form-group label {
+  color: white;
+  font-weight: 600;
+  text-align: right;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-group label {
+  text-align: left;
+  font-weight: 500;
+}
+
+.generate-btn {
+  margin-top: 20px;
+  margin-left: 176px; /* aligns with inputs */
+
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  opacity: 0.9;
+}
