@@ -1,11 +1,14 @@
 import { useState } from "react";
 import "../styles/ItineraryAccordion.css";
+import type { DayPlan } from "../types/trip";
 
 export default function ItineraryAccordion({
   itinerary,
+}: {
+  itinerary: DayPlan[];
 }) {
   const [openDay, setOpenDay] =
-    useState(null);
+    useState<number | null>(null);
 
   if (!itinerary?.length) {
     return null;
@@ -13,7 +16,7 @@ export default function ItineraryAccordion({
 
   return (
     <div>
-      {itinerary.map((day) => (
+      {itinerary.map((day: DayPlan) => (
         <div
           key={day.day}
           className="day-card"

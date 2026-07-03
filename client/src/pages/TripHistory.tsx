@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { getTrips } from "../api/tripApi";
 import ItineraryAccordion from "../components/ItineraryAccordion";
 import "../styles/TripHistory.css";
+import type { TripResponse } from "../types/trip";
 
 export default function TripHistory() {
-  const [trips, setTrips] = useState([]);
+  const [trips, setTrips] = useState<TripResponse[]>([]);
 
   useEffect(() => {
     async function loadTrips() {
@@ -24,7 +25,7 @@ export default function TripHistory() {
       <h2 className="title">Saved Trips</h2>
 
       <div className="history-grid">
-        {trips.map((trip) => (
+        {trips.map((trip:TripResponse) => (
           <div
             key={trip.id}
             className="history-card"
@@ -48,8 +49,7 @@ export default function TripHistory() {
 
             <ItineraryAccordion
               itinerary={
-                trip.itinerary
-                  ?.itinerary || []
+                trip.itinerary || []
               }
             />
           </div>

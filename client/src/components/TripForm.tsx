@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { generateTrip } from "../api/tripApi";
 import "../styles/TripForm.css";
+import type { Trip } from "../types/trip";
+
+interface TripFormProps {
+  onResult: (trip: Trip) => void;
+  loading?: boolean;
+  setLoading?: (loading: boolean) => void;
+}
 
 export default function TripForm({
   onResult,
+  loading,
   setLoading,
-}) {
+}: TripFormProps) {
   const [formData, setFormData] =
     useState({
       sourceCity: "",
@@ -16,7 +24,7 @@ export default function TripForm({
       aiDestination: true,
     });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       name,
       value,
@@ -33,7 +41,7 @@ export default function TripForm({
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -227,6 +235,7 @@ export default function TripForm({
       <button
         type="submit"
         className="generate-btn"
+        disabled={loading}
       >
         Generate Trip
       </button>
