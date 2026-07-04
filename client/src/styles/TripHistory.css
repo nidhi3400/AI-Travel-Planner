@@ -5,15 +5,18 @@
 }
 
 .history-card {
-  background: #111827;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+
   border-radius: 14px;
   padding: 20px;
-  border: 1px solid #1e293b;
-  transition: 0.2s ease;
+
+  transition: all 0.2s ease;
 }
 
 .history-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .history-header {
@@ -24,18 +27,35 @@
 
 .history-header h3 {
   margin: 0;
-  color: white;
+  color: var(--text-color);
 }
 
 .history-budget {
   background: #16a34a;
   color: white;
+
   padding: 6px 12px;
   border-radius: 999px;
+
   font-size: 14px;
+  font-weight: 600;
 }
 
 .history-card p {
-  color: #cbd5e1;
+  color: var(--text-color);
+  opacity: 0.8;
   margin-top: 10px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-state h2 {
+  color: var(--text-color);
+}
+
+.empty-state p {
+  opacity: 0.7;
 }

@@ -12,19 +12,27 @@
 }
 
 .form-group label {
-  color: white;
+  color: var(--text-color);
   font-weight: 600;
   text-align: right;
 }
 
 .form-group input,
 .form-group select {
-  width: 100%;
+  /* width: 100%; */
   padding: 12px;
+
   border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: white;
+  border: 1px solid var(--border-color);
+
+  background: var(--bg);
+  color: var(--text-color);
+
+  font-size: 14px;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
 }
 
 .radio-group {
@@ -36,23 +44,40 @@
 .radio-group label {
   text-align: left;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 .generate-btn {
   margin-top: 20px;
-  margin-left: 176px; /* aligns with inputs */
+  margin-left: 176px;
 
   padding: 14px 20px;
+
   border: none;
   border-radius: 10px;
 
-  background: #2563eb;
+  background: var(--primary);
   color: white;
 
   font-weight: 600;
   cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
 .generate-btn:hover {
-  opacity: 0.9;
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }

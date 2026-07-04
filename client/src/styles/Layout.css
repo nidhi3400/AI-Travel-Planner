@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  background: #0f172a;
-  color: white;
+  background: var(--bg);
+  color: var(--text-color);
   font-family: Arial, sans-serif;
 }
 
 .title {
-  color: white;
+  color: var(--text-color);
   font-weight: bold;
   font-size: 28px;
 }
@@ -33,12 +33,20 @@ body {
 
 .trip-form-panel,
 .trip-result-panel {
-  background: #111827;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 20px;
+
+  /* Nice shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 768px) {
+  .trip-page {
+    grid-template-columns: 1fr;
+  }
+
   .form-group {
     grid-template-columns: 1fr;
   }

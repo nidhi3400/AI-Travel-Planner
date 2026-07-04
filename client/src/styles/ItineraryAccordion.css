@@ -1,5 +1,6 @@
 .day-card {
-  background: #1e293b;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   margin-bottom: 12px;
   overflow: hidden;
@@ -9,7 +10,7 @@
   width: 100%;
   border: none;
   background: transparent;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
 
   padding: 16px;
@@ -27,11 +28,12 @@
 }
 
 .activity {
-  background: #334155;
-  border-left: 4px solid #3b82f6;
+  background: var(--bg);
+  border-left: 4px solid var(--primary);
 
   padding: 12px;
   margin-top: 8px;
 
   border-radius: 8px;
+  color: var(--text-color);
 }

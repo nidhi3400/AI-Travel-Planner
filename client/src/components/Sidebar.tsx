@@ -1,13 +1,38 @@
 import { Link, useLocation } from "react-router-dom";
 import "../styles/Sidebar.css";
 
-export default function Sidebar() {
+interface SidebarProps {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+export default function Sidebar({ theme, setTheme }: SidebarProps) {
   const location = useLocation();
 
   return (
     <div className="sidebar">
-      <h2>✈️ Planner</h2>
+      <h2 className="title">✈️ Planner</h2>
+      <div className="theme-switch">
+  <span>☀️ <b>Light</b></span>
 
+  <label className="switch">
+    <input
+      type="checkbox"
+      checked={theme === "dark"}
+      onChange={() =>
+        setTheme(
+          theme === "light"
+            ? "dark"
+            : "light"
+        )
+      }
+    />
+
+    <span className="slider"></span>
+  </label>
+
+  <span>🌙<b>Dark</b></span>
+</div>
       <Link
         className={
           location.pathname === "/"

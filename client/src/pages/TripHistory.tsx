@@ -24,7 +24,14 @@ export default function TripHistory() {
     <div>
       <h2 className="title">Saved Trips</h2>
 
-      <div className="history-grid">
+      {trips.length ===0 ? <div className="empty-state">
+      <h2>🧳 No Trips Yet</h2>
+
+      <p>
+        Generate your first AI-powered
+        itinerary.
+      </p>
+    </div>: <div className="history-grid">
         {trips.map((trip:TripResponse) => (
           <div
             key={trip.id}
@@ -54,7 +61,7 @@ export default function TripHistory() {
             />
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   );
 }

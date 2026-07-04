@@ -221,7 +221,7 @@ export default function TripForm({
 
         <input
           name="interests"
-          placeholder="Coffee, Mountains, Food"
+          placeholder="Eg. Coffee, Mountains, Food"
           value={
             formData.interests
           }
