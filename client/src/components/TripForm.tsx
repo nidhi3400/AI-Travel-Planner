@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateTrip } from "../api/tripApi";
 import "../styles/TripForm.css";
-import type { Trip } from "../types/trip";
+import type { Trip, TripFormData } from "../types/trip";
 
 interface TripFormProps {
   onResult: (trip: Trip) => void;
@@ -15,18 +15,34 @@ export default function TripForm({
   setLoading,
 }: TripFormProps) {
 
-  const [formData, setFormData] =
-    useState({
+  const defaultFormData: TripFormData = {
       sourceCity: "",
       destinationCity: "",
       budget: "",
       duration: "",
       interests: "",
       aiDestination: true,
-    });
+    }
 
-  const [errorMessage, setErrorMessage] =
-  useState("");
+  const [formData, setFormData] = useState<TripFormData>(() => {
+    const saved =
+      localStorage.getItem(
+        "tripFormData"
+      );
+
+    return saved
+      ? JSON.parse(saved)
+      : defaultFormData;
+  });
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  useEffect(() => {
+    localStorage.setItem(
+      "tripFormData",
+      JSON.stringify(formData)
+    );
+  }, [formData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -75,7 +91,7 @@ export default function TripForm({
           interests:
             formData.interests
               .split(",")
-              .map((i) =>
+              .map((i: string) =>
                 i.trim()
               ),
 
@@ -85,6 +101,9 @@ export default function TripForm({
 
       onResult(
         response.data
+      );
+      localStorage.removeItem(
+        "tripFormData"
       );
     } catch (error: unknown) {
       const err = error as { response?: { status: number; data: { message: string } } };

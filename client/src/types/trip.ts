@@ -28,3 +28,12 @@ export interface TripResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface TripFormData {
+  sourceCity: string;
+  destinationCity: string;
+  budget: string;
+  duration: string;
+  interests: string;
+  aiDestination: boolean;
+}

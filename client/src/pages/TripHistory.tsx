@@ -6,6 +6,7 @@ import type { TripResponse } from "../types/trip";
 
 export default function TripHistory() {
   const [trips, setTrips] = useState<TripResponse[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function loadTrips() {
@@ -14,6 +15,8 @@ export default function TripHistory() {
         setTrips(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -24,7 +27,12 @@ export default function TripHistory() {
     <div>
       <h2 className="title">Saved Trips</h2>
 
-      {trips.length ===0 ? <div className="empty-state">
+      {loading ? (
+        <div className="loading">
+          Loading trips...
+        </div>
+      ) :
+      trips.length ===0 ? <div className="empty-state">
       <h2>🧳 No Trips Yet</h2>
 
       <p>
