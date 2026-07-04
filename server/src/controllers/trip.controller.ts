@@ -42,11 +42,10 @@ export async function createTrip(
       });
 
     if (existingTrip) {
-      return res.json({
-        success: true,
-        duplicate: true,
-        tripId: existingTrip.id,
-        data: existingTrip.itinerary,
+      return res.status(409).json({
+        success: false,
+        message:
+          "A similar trip already exists in your history.",
       });
     }
 

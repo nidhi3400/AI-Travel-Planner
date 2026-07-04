@@ -14,6 +14,7 @@ export default function TripForm({
   loading,
   setLoading,
 }: TripFormProps) {
+
   const [formData, setFormData] =
     useState({
       sourceCity: "",
@@ -23,6 +24,9 @@ export default function TripForm({
       interests: "",
       aiDestination: true,
     });
+
+  const [errorMessage, setErrorMessage] =
+  useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -43,6 +47,7 @@ export default function TripForm({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage("");
 
     try {
       setLoading?.(true);
@@ -81,11 +86,20 @@ export default function TripForm({
       onResult(
         response.data
       );
-    } catch (error) {
+    } catch (error: unknown) {
+      const err = error as { response?: { status: number; data: { message: string } } };
       console.error(error);
-      alert(
-        "Failed to generate trip"
-      );
+      if (
+    err?.response?.status === 409
+  ) {
+    setErrorMessage(
+      err?.response.data.message
+    );
+  } else {
+    setErrorMessage(
+      "Failed to generate trip"
+    );
+  }
     } finally {
       setLoading?.(false);
     }
@@ -96,6 +110,11 @@ export default function TripForm({
       onSubmit={handleSubmit}
       className="trip-form"
     >
+      {errorMessage && (
+        <div className="warning-message">
+          ⚠️ {errorMessage}
+        </div>
+      )}
       <div className="form-group">
         <label>
           Source City
