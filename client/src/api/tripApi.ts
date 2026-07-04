@@ -5,8 +5,23 @@ const API_URL = "https://ai-travel-planner-1-yrm0.onrender.com";
 const API = `${API_URL}/api/trips`;
 
 export const generateTrip = async (data : GenerateTripRequest) => {
-  const res = await axios.post(`${API}/generate`, data);
-  return res.data;
+  try{
+    const res = await axios.post(`${API}/generate`, data);
+    return res.data;
+  } catch (error: unknown) {
+    if (
+      axios.isAxiosError(error) &&
+      error.response?.status === 409
+    ) {
+      throw {
+        duplicate: true,
+        message:
+          error.response.data.message,
+      };
+    }
+
+    throw error;
+  }
 };
 
 export const getTrips = async () => {
